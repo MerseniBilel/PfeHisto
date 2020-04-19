@@ -15,17 +15,18 @@ class CreatePvesTable extends Migration
     {
         Schema::create('pves', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('student_id');
-            $table->unsignedInteger('teacher_id');
-            $table->unsignedInteger('company_id');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('teacher_id');
+            $table->unsignedBigInteger('company_id');
             $table->unsignedInteger('rate');
             $table->timestamps();
 
 
 
-            $table->foreign('student_id')->references('id')->on('students');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
-            $table->foreign('company_id')->references('id')->on('companies');
+
+            $table->foreign('student_id')->references('id')->on('Students');
+            $table->foreign('teacher_id')->references('id')->on('Teachers');
+            $table->foreign('company_id')->references('id')->on('Companies');
         });
     }
 
